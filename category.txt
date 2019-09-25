@@ -1,0 +1,12 @@
+
+<?php include('header.php'); ?>
+
+  <div class="row">
+  
+	<h2> Dashbord </h2>
+  </div><!--end row-->
+  
+
+
+  
+<?php include('footer.php'); ?>

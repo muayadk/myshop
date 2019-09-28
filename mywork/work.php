@@ -20,10 +20,19 @@
 		 return $i;
 	}
 	
+	// دالة تاتمين من الاختراق 
+	function check($n)
+	{
+		return mysqli_real_escape_string($this->con(),$n);
+	}
+		
+	
+	
 	//دالة اضافة صنف
 	
 	function addcategory($a)
 	{
+		$a=$this->check($a);
 		$q=mysqli_query($this->con(), 
 		"insert into category (cat_name) values('$a')") 
 		or die("error insert in to category");
@@ -38,7 +47,32 @@
 			
 			return $q;
 		}
+		
+		
+		//  دالة ادخال المنتجات
+		
+		function addproduct($a,$b,$c,$d,$e)
+		{
+			$a=$this->check($a);
+		    $b=$this->check($b);
+			$c=$this->check($c);
+			$d=$this->check($d);
+			$e=$this->check($e);
+			
+	$q=mysqli_query($this->con(), 
+	"insert into product (product_name,product_price,product_details,product_tags,cat_id) values('$a','$b','$c','$d','$e')") or die("Error inserting to table product");
+			
+			
+		}
+		
+	// دالة لاسترجاع المنتجات	
+	function getAllproduct()	
+	{
+		$q=mysqli_query($this->con() , "select * from product") or die("error retrive product");
+			
+			return $q;
+	}
 	
-}
+   }  // نهاية الكلاس 
 
 ?>
